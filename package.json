@@ -1,0 +1,18 @@
+{
+  "name": "s2-tech-training-center",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["frontend", "backend"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run start:dev --workspace=backend",
+    "build": "npm run build --workspace=frontend && npm run build --workspace=backend",
+    "db:migrate": "npm run prisma:migrate --workspace=backend",
+    "db:seed": "npm run prisma:seed --workspace=backend",
+    "db:studio": "npm run prisma:studio --workspace=backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

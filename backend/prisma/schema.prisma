@@ -1,0 +1,152 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+}
+
+model Teacher {
+  id       String   @id @default(cuid())
+  slug     String   @unique
+  initials String
+  name     String
+  role     String
+  color    String
+  cover    String
+  bio      String
+  subjects Json
+  tags     String[]
+  students String
+  years    String
+  rating   String
+  courses  Course[]
+  imageUrl  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  emoji       String
+  category    String
+  name        String
+  tagline     String
+  description String
+  color       String
+  shadow      String
+  thumb       String
+  badge       String
+  badgeColor  String
+  badgeText   String
+  tags        String[]
+  price       String
+  priceShort  String
+  teacherId   String
+  teacher     Teacher  @relation(fields: [teacherId], references: [id])
+  lessons     Lesson[]
+  aboutPoints String[]
+  stats       Json
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lesson {
+  id       String  @id @default(cuid())
+  courseId String
+  course   Course  @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  title    String
+  duration String
+  isFree   Boolean @default(false)
+  videoUrl String?
+  order    Int
+}
+
+model Student {
+  id          String @id @default(cuid())
+  emoji       String
+  category    String
+  bg          String
+  badge       String
+  badgeLabel  String
+  project     String
+  avatarColor String
+  initials    String
+  name        String
+  className   String
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+}
+
+model Review {
+  id          String @id @default(cuid())
+  stars       Int    @default(5)
+  text        String
+  avatarColor String
+  initials    String
+  authorName  String
+  authorRole  String
+  createdAt   DateTime @default(now())
+}
+
+model BlogPost {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  thumb         String
+  category      String
+  categoryColor String
+  date          String
+  readTime      String
+  title         String
+  excerpt       String
+  content       String   @default("")
+  avatarColor   String
+  authorName    String
+  imageUrl      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Enrollment {
+  id            String   @id @default(cuid())
+  courseName    String
+  courseId      String?
+  amount        String
+  paymentMethod String
+  fullName      String
+  phoneNumber   String
+  transferRef   String?
+  screenshotUrl String?
+  status        String   @default("pending")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OtpToken {
+  id        String   @id @default(cuid())
+  email     String
+  otp       String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
