@@ -18,7 +18,7 @@ RUN echo "=== src contents ===" && ls -la src/
 
 RUN ./node_modules/.bin/tsc --version
 
-RUN ./node_modules/.bin/tsc -p tsconfig.build.json --noIncremental --listEmittedFiles 2>&1
+RUN ./node_modules/.bin/tsc -p tsconfig.build.json --listEmittedFiles 2>&1
 
 RUN echo "=== dist contents ===" && ls -la dist/ 2>&1 || echo "dist/ NOT CREATED"
 
