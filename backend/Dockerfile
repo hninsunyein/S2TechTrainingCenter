@@ -11,8 +11,12 @@ COPY backend/nest-cli.json ./
 COPY backend/tsconfig.json ./
 COPY backend/src ./src
 
-RUN npm run build
+RUN ./node_modules/.bin/prisma generate
+
+RUN ./node_modules/.bin/nest build
+
+RUN ls dist/main.js && echo "BUILD SUCCESS"
 
 EXPOSE 3001
 
-CMD ["sh", "-c", "npm run start"]
+CMD ["sh", "-c", "./node_modules/.bin/prisma migrate deploy && node dist/main"]
