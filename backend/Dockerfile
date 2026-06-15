@@ -9,6 +9,7 @@ RUN npm install
 COPY backend/prisma ./prisma
 COPY backend/nest-cli.json ./
 COPY backend/tsconfig.json ./
+COPY backend/tsconfig.build.json ./
 COPY backend/src ./src
 
 RUN ./node_modules/.bin/prisma generate
