@@ -14,7 +14,7 @@ COPY backend/src ./src
 
 RUN ./node_modules/.bin/prisma generate
 
-RUN ./node_modules/.bin/nest build
+RUN ./node_modules/.bin/tsc -p tsconfig.build.json
 
 RUN ls dist/main.js && echo "BUILD SUCCESS"
 
