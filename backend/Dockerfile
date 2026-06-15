@@ -2,19 +2,17 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-# Copy workspace root manifests
-COPY package*.json ./
-COPY backend/package*.json ./backend/
+COPY backend/package*.json ./
 
-# Install ALL dependencies (including devDependencies for build tools)
 RUN npm install
 
-# Copy backend source
-COPY backend/ ./backend/
+COPY backend/prisma ./prisma
+COPY backend/nest-cli.json ./
+COPY backend/tsconfig.json ./
+COPY backend/src ./src
 
-# Build (prisma generate + nest build)
-RUN npm run build --workspace=backend
+RUN npx prisma generate && npx nest build
 
 EXPOSE 3001
 
-CMD ["npm", "run", "start", "--workspace=backend"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]

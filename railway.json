@@ -3,8 +3,5 @@
   "build": {
     "builder": "DOCKERFILE",
     "dockerfilePath": "backend/Dockerfile"
-  },
-  "deploy": {
-    "startCommand": "npm run start --workspace=backend"
   }
 }
