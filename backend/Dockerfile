@@ -14,7 +14,13 @@ COPY backend/src ./src
 
 RUN ./node_modules/.bin/prisma generate
 
-RUN ./node_modules/.bin/tsc -p tsconfig.build.json
+RUN echo "=== src contents ===" && ls -la src/
+
+RUN ./node_modules/.bin/tsc --version
+
+RUN ./node_modules/.bin/tsc -p tsconfig.build.json --noIncremental --listEmittedFiles 2>&1
+
+RUN echo "=== dist contents ===" && ls -la dist/ 2>&1 || echo "dist/ NOT CREATED"
 
 RUN ls dist/main.js && echo "BUILD SUCCESS"
 
