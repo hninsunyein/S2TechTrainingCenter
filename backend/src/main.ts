@@ -13,7 +13,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000',
       'http://localhost:3001',
-      'https://s2-tech-training-center-frontend.vercel.app',
+      'https://s2-tech-training-center.vercel.app',
     ],
     credentials: true,
   });
