@@ -128,12 +128,12 @@ export default function PaymentModal({ open, onClose, course }: Props) {
               <div style={lbl}>{t('pay_choose_pm')}</div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
                 {([
-                  { key: 'kpay' as PayMethod, emoji: '💜', name: 'KBZ Pay', sub: 'KPay QR Code' },
-                  { key: 'scb'  as PayMethod, emoji: '🏦', name: 'Thai SCB Bank', sub: `${priceTHB} / ${priceMMK}` },
+                  { key: 'kpay' as PayMethod, logo: '/assets/img/kpay%20logo.png', name: 'KBZ Pay', sub: 'KPay QR Code' },
+                  { key: 'scb'  as PayMethod, logo: '/assets/img/SCB%20logo.png',  name: 'Thai SCB Bank', sub: `${priceTHB} / ${priceMMK}` },
                 ] as const).map((m) => (
                   <div key={m.key} onClick={() => setMethod(m.key)}
                     style={{ background: method === m.key ? 'rgba(14,165,200,.08)' : 'var(--inp)', border: method === m.key ? '2px solid var(--teal)' : '2px solid var(--border)', borderRadius: 'var(--r)', padding: '16px 12px', cursor: 'pointer', textAlign: 'center', transition: 'all .15s' }}>
-                    <span style={{ fontSize: '26px', display: 'block', marginBottom: '6px' }}>{m.emoji}</span>
+                    <img src={m.logo} alt={m.name} style={{ width: '40px', height: '40px', objectFit: 'contain', display: 'block', margin: '0 auto 6px', borderRadius: '6px' }} />
                     <span style={{ fontSize: '12px', fontWeight: 700, color: method === m.key ? 'var(--text)' : 'var(--text2)', display: 'block', marginBottom: '2px' }}>{m.name}</span>
                     <span style={{ fontSize: '10px', color: 'var(--text3)' }}>{m.sub}</span>
                   </div>
@@ -143,9 +143,8 @@ export default function PaymentModal({ open, onClose, course }: Props) {
               {/* KBZ Pay info */}
               {method === 'kpay' && (
                 <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 'var(--r)', padding: '20px', textAlign: 'center', marginBottom: '16px' }}>
-                  <div style={{ width: '140px', height: '140px', background: '#fff', borderRadius: '10px', margin: '0 auto 12px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', color: '#999', border: '1px solid #eee' }}>
-                    KBZ Pay QR
-                  </div>
+                  <img src="/assets/img/kpay logo.png" alt="KBZ Pay logo" style={{ height: '32px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
+                  <img src="/assets/img/kpay.jpg" alt="KBZ Pay QR code" style={{ width: '160px', height: '160px', objectFit: 'contain', background: '#fff', borderRadius: '10px', margin: '0 auto 12px', display: 'block', border: '1px solid #eee', padding: '4px' }} />
                   <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text)' }}>S2 Tech Training Center</div>
                   <div style={{ fontSize: '12px', color: 'var(--text2)', marginTop: '4px' }}>KBZ Pay · 09-795350009</div>
                   <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--teal)', marginTop: '8px' }}>{priceMMK}</div>
@@ -156,12 +155,13 @@ export default function PaymentModal({ open, onClose, course }: Props) {
               {method === 'scb' && (
                 <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 'var(--r)', padding: '16px', marginBottom: '16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px' }}>
-                    <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#4e2d7b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px', flexShrink: 0 }}>🏦</div>
+                    <img src="/assets/img/SCB logo.png" alt="SCB logo" style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', flexShrink: 0 }} />
                     <div>
                       <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text)' }}>ธนาคารไทยพาณิชย์ (SCB)</div>
                       <div style={{ fontSize: '11px', color: 'var(--text3)' }}>Siam Commercial Bank</div>
                     </div>
                   </div>
+                  <img src="/assets/img/scb.jpg" alt="SCB QR code" style={{ width: '160px', height: '160px', objectFit: 'contain', background: '#fff', borderRadius: '10px', margin: '0 auto 14px', display: 'block', border: '1px solid #eee', padding: '4px' }} />
                   {[
                     ['Account Name', 'S2 Tech Training Center'],
                     ['Account No.', 'XXX-X-XXXXX-X'],

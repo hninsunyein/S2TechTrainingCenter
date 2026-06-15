@@ -63,7 +63,6 @@ export default function Footer() {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '20px', borderTop: '1px solid var(--border)', flexWrap: 'wrap', gap: '10px' }}>
         <div style={{ fontSize: '11px', color: 'var(--text3)' }}>{t('ft_copy')}</div>
-        <div style={{ fontSize: '11px', color: 'var(--text3)' }}>{t('ft_made')}</div>
       </div>
     </footer>
   );
