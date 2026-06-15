@@ -129,7 +129,7 @@ export default function PaymentModal({ open, onClose, course }: Props) {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
                 {([
                   { key: 'kpay' as PayMethod, logo: '/assets/img/kpay%20logo.png', name: 'KBZ Pay', sub: 'KPay QR Code' },
-                  { key: 'scb'  as PayMethod, logo: '/assets/img/SCB%20logo.png',  name: 'Thai SCB Bank', sub: `${priceTHB} / ${priceMMK}` },
+                  { key: 'scb'  as PayMethod, logo: '/assets/img/SCB%20logo.png',  name: 'Thai SCB Bank', sub: 'SCB QR Code' },
                 ] as const).map((m) => (
                   <div key={m.key} onClick={() => setMethod(m.key)}
                     style={{ background: method === m.key ? 'rgba(14,165,200,.08)' : 'var(--inp)', border: method === m.key ? '2px solid var(--teal)' : '2px solid var(--border)', borderRadius: 'var(--r)', padding: '16px 12px', cursor: 'pointer', textAlign: 'center', transition: 'all .15s' }}>
