@@ -145,8 +145,8 @@ export default function PaymentModal({ open, onClose, course }: Props) {
                 <div style={{ background: 'var(--bg3)', border: '1px solid var(--border)', borderRadius: 'var(--r)', padding: '20px', textAlign: 'center', marginBottom: '16px' }}>
                   <img src="/assets/img/kpay logo.png" alt="KBZ Pay logo" style={{ height: '32px', objectFit: 'contain', margin: '0 auto 12px', display: 'block' }} />
                   <img src="/assets/img/kpay.jpg" alt="KBZ Pay QR code" style={{ width: '160px', height: '160px', objectFit: 'contain', background: '#fff', borderRadius: '10px', margin: '0 auto 12px', display: 'block', border: '1px solid #eee', padding: '4px' }} />
-                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text)' }}>S2 Tech Training Center</div>
-                  <div style={{ fontSize: '12px', color: 'var(--text2)', marginTop: '4px' }}>KBZ Pay · 09-795350009</div>
+                  <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--text)' }}>Hnin Su Nyein</div>
+                  <div style={{ fontSize: '12px', color: 'var(--text2)', marginTop: '4px' }}>KBZ Pay · 09444416781</div>
                   <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--teal)', marginTop: '8px' }}>{priceMMK}</div>
                 </div>
               )}
@@ -163,7 +163,7 @@ export default function PaymentModal({ open, onClose, course }: Props) {
                   </div>
                   <img src="/assets/img/scb.jpg" alt="SCB QR code" style={{ width: '160px', height: '160px', objectFit: 'contain', background: '#fff', borderRadius: '10px', margin: '0 auto 14px', display: 'block', border: '1px solid #eee', padding: '4px' }} />
                   {[
-                    ['Account Name', 'S2 Tech Training Center'],
+                    ['Account Name', 'Hnin Su Nyein'],
                     ['Account No.', 'XXX-X-XXXXX-X'],
                     ['Amount (THB)', priceTHB],
                     ['Amount (MMK)', priceMMK],
